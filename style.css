@@ -1,0 +1,577 @@
+/* General Styling & Fonts */
+body {
+    font-family: 'Quicksand', sans-serif;
+    background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    color: #444;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    font-size: 16px;
+}
+
+h1, h2, .card-title {
+    font-family: 'Pacifico', cursive;
+    color: #d6336c;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Mute Button Style */
+.mute-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    color: #d6336c;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.mute-btn:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+
+/* Background Animations */
+.background-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.heart-bg {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.3);
+    width: 80px;
+    height: 72px;
+    transform: rotate(-45deg);
+    opacity: 0;
+    animation: floatHeart 15s infinite ease-in;
+}
+.heart-bg::before,
+.heart-bg::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    background-color: inherit;
+    border-radius: 50%;
+}
+.heart-bg::before { top: -40px; left: 0; }
+.heart-bg::after { left: 40px; top: 0; }
+
+.heart-bg-1 { left: 10%; top: 0%; animation-delay: 0s; transform: scale(0.8) rotate(-45deg); }
+.heart-bg-2 { left: 50%; top: 20%; animation-delay: 5s; transform: scale(1.1) rotate(-45deg); }
+.heart-bg-3 { left: 80%; top: -10%; animation-delay: 10s; transform: scale(0.9) rotate(-45deg); }
+
+.sparkle {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    opacity: 0;
+    animation: twinkle 8s infinite ease-out;
+}
+.sparkle-1 { left: 5%; top: 15%; width: 5px; height: 5px; animation-delay: 1s; }
+.sparkle-2 { left: 90%; top: 30%; width: 7px; height: 7px; animation-delay: 3s; }
+.sparkle-3 { left: 20%; top: 80%; width: 6px; height: 6px; animation-delay: 5s; }
+.sparkle-4 { left: 70%; top: 5%; width: 8px; height: 8px; animation-delay: 7s; }
+
+
+/* Page Management */
+.page {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+}
+.page.active {
+    display: flex;
+    opacity: 1;
+    transform: scale(1);
+    z-index: 10;
+}
+
+/* Card Styling */
+.card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(5px);
+    padding: 2.5rem 3rem;
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    max-width: 550px;
+    width: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+}
+
+.password-card.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+
+/* Inputs & Buttons */
+input[type="text"] {
+    width: calc(100% - 40px);
+    padding: 14px 20px;
+    border: 1px solid #ffb3c8;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+input[type="text"]:focus {
+    outline: none;
+    border-color: #d6336c;
+    box-shadow: 0 0 0 3px rgba(214, 51, 108, 0.2);
+}
+
+button {
+    background: linear-gradient(45deg, #d6336c, #ff8fab);
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 25px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+button:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 20px rgba(214, 51, 108, 0.4);
+    background: linear-gradient(45deg, #ff8fab, #d6336c);
+}
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(214, 51, 108, 0.3);
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 0.95rem;
+    margin-top: 10px;
+    min-height: 1.2rem;
+    font-weight: 500;
+}
+
+/* Page 1: Intro Heart */
+.intro-container {
+    text-align: center;
+}
+.intro-text {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.8rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    margin-top: 20px;
+    padding: 0 20px;
+    min-height: 100px; /* Give space for text to appear */
+}
+.intro-text .word {
+    opacity: 0;
+    display: inline-block;
+    transform: translateY(10px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.intro-text .word.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.heart-opener {
+    position: relative;
+    width: 100px;
+    height: 90px;
+    animation: pulse 1.8s infinite ease-in-out;
+    margin: 50px auto;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+.heart-opener:hover {
+    animation-play-state: paused;
+    transform: scale(1.05);
+}
+.heart-opener::before,
+.heart-opener::after {
+    content: "";
+    position: absolute;
+    left: 50px;
+    top: 0;
+    width: 50px;
+    height: 80px;
+    background: #ff5773;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    transition: background 0.3s ease;
+}
+.heart-opener::after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+.heart-opener:hover::before,
+.heart-opener:hover::after {
+    background: #ff2e56;
+}
+
+
+/* Page 3: Cake */
+.cake-card {
+    max-width: 450px;
+    overflow: hidden;
+}
+
+.cake-container {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    margin: 30px auto;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+.cake-container:hover {
+    transform: scale(1.05);
+}
+
+.cake-half {
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    
+    /* === REMEMBER TO CHANGE THIS IMAGE! === */
+    background-image: url('https://images.pexels.com/photos/1702373/pexels-photo-1702373.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+    
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+    z-index: 10;
+}
+
+#cake-left {
+    left: 0;
+    background-position: 0 50%;
+    border-radius: 10px 0 0 10px;
+}
+#cake-right {
+    right: 0;
+    background-position: 100% 50%;
+    border-radius: 0 10px 10px 0;
+}
+
+#cake-left.split {
+    transform: translateX(-120px) rotate(-8deg);
+}
+#cake-right.split {
+    transform: translateX(120px) rotate(8deg);
+}
+
+.cut-prompt {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    z-index: 11;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+.cut-prompt i {
+    animation: tap 1.5s infinite;
+}
+.cut-prompt.hidden {
+    opacity: 0;
+}
+
+.cake-message {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    z-index: 5;
+    transition: opacity 0.8s ease 0.5s, transform 0.8s ease 0.5s;
+}
+.cake-message.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+.cake-message h3 {
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+.cake-message p {
+    font-size: 1.1rem;
+    color: #555;
+    font-weight: 500;
+}
+
+/* Confetti Effect */
+.confetti-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 100;
+}
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: var(--confetti-color);
+    opacity: 0;
+    animation: confetti-fall 2s forwards ease-out;
+}
+
+
+/* Page 4: Message */
+.message-card {
+    text-align: left; /* Card is left-aligned */
+    max-width: 600px;
+}
+.message-content {
+    text-align: left; /* Content is left-aligned */
+}
+.message-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-size: 1.15rem;
+}
+.message-content p:last-of-type {
+    margin-bottom: 0;
+}
+
+.nickname-list {
+    margin: 20px 0 20px 30px; /* Indent the list */
+}
+.nickname-item {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.nickname-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.highlight-name {
+    font-family: 'Pacifico', cursive;
+    color: #d6336c;
+    font-size: 1.25em;
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.love-signature {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5rem;
+    text-align: right;
+    margin-top: 2rem;
+    color: #d6336c;
+    animation: glow 2.5s infinite alternate ease-in-out;
+}
+
+/* ============================================= */
+/* ===   NEW STYLE FOR THE BUTTON CONTAINER  === */
+/* ============================================= */
+.next-page-container {
+    text-align: center; /* This centers the button */
+    width: 100%;
+    margin-top: 1.5rem; /* Adds space above the button */
+}
+
+
+/* Page 5: 3D Carousel */
+.gallery-title {
+    color: white;
+    font-size: 2.2rem;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+    margin-bottom: 30px;
+}
+.scene {
+    width: 300px;
+    height: 400px;
+    perspective: 1000px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.carousel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease-in-out;
+    transform: translateZ(-300px);
+}
+.carousel.auto-rotate {
+    animation: rotateCarousel 30s infinite linear;
+}
+.carousel.paused {
+    animation-play-state: paused;
+}
+
+.carousel-cell {
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    border: 5px solid white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    color: #888;
+    text-align: center;
+}
+.carousel-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.carousel-cell:nth-child(1) { transform: rotateY(  0deg) translateZ(300px); }
+.carousel-cell:nth-child(2) { transform: rotateY( 60deg) translateZ(300px); }
+.carousel-cell:nth-child(3) { transform: rotateY(120deg) translateZ(300px); }
+.carousel-cell:nth-child(4) { transform: rotateY(180deg) translateZ(300px); }
+.carousel-cell:nth-child(5) { transform: rotateY(240deg) translateZ(300px); }
+.carousel-cell:nth-child(6) { transform: rotateY(300deg) translateZ(300px); }
+
+.controls {
+    display: flex;
+    gap: 15px;
+}
+.controls button {
+    font-size: 1.8rem;
+    padding: 10px 20px;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    margin-top: 0;
+}
+.controls button i {
+    font-size: 1.3rem;
+}
+
+
+/* --- Keyframe Animations --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(100vh) rotate(-45deg) scale(0.5); opacity: 0; }
+    5% { opacity: 1; }
+    95% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(-45deg) scale(1.2); opacity: 0; }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.5); }
+    50% { opacity: 0.8; transform: scale(1); }
+}
+
+@keyframes tap {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translate(var(--start-x), var(--start-y)) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--end-x), var(--end-y)) rotate(var(--end-rot));
+        opacity: 0;
+    }
+}
+
+@keyframes rotateCarousel {
+    from { transform: translateZ(-300px) rotateY(0deg); }
+    to { transform: translateZ(-300px) rotateY(360deg); }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-10px); }
+    40%, 80% { transform: translateX(10px); }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px #fff, 0 0 10px #ff8fab, 0 0 15px #ff8fab;
+    }
+    to {
+        text-shadow: 0 0 10px #fff, 0 0 20px #d6336c, 0 0 30px #d6336c;
+    }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Amazing Girl!</title>
+    <link rel="stylesheet" href="style.css">
+    
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    
+<audio id="bg-music" loop>
+        <source src="your-song.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <button id="mute-btn" class="mute-btn">
+        <i class="fas fa-volume-up"></i>
+    </button>
+
+
+    
+<div class="background-animation">
+        <div class="heart-bg heart-bg-1"></div>
+        <div class="heart-bg heart-bg-2"></div>
+        <div class="heart-bg heart-bg-3"></div>
+        <div class="sparkle sparkle-1"></div>
+        <div class="sparkle sparkle-2"></div>
+        <div class="sparkle sparkle-3"></div>
+        <div class="sparkle sparkle-4"></div>
+    </div>
+
+    
+<div id="page-intro" class="page active">
+        <div class="intro-container">
+            <div id="heart-opener" class="heart-opener"></div>
+            <p class="intro-text" id="intro-text">
+                </p>
+        </div>
+    </div>
+
+    
+<div id="page-password" class="page">
+        <div class="card password-card" id="password-card">
+            <h2 class="card-title">A little secret just for you...</h2>
+            <p>What's the *most special* name I call you?</p>
+            <input type="text" id="nickname-input" placeholder="Hint: You know very well 😉">
+            <button id="submit-nickname">Unlock the Magic <i class="fas fa-key"></i></button>
+            <p id="error-message" class="error-message"></p>
+        </div>
+    </div>
+
+    
+<div id="page-cake" class="page">
+        <div class="card cake-card">
+            <h2 class="card-title" id="cake-title">Make a Wish, My Sweety!</h2>
+            
+            <div id="cake-container" class="cake-container">
+                <div class="confetti-container"></div> 
+                
+<div class="cake-half" id="cake-left"></div>
+                <div class="cake-half" id="cake-right"></div>
+                
+<div id="cake-message" class="cake-message">
+                    <h3 class="card-title">Happy Birthday!</h3>
+                    <p>My life is perfect because you are in it. I love you more than anything❤️</p>
+                </div>
+                
+<div id="cut-prompt" class="cut-prompt">
+                    <i class="fas fa-hand-pointer"></i>
+                    <p>Touch the cake to cut it!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+<div id="page-message" class="page">
+        <div class="card message-card">
+            <h2 class="card-title">Wishing you a very Happiest Birthday!</h2>
+            <div class="message-content">
+                <p>To my beautiful...</p>
+                
+<div class="nickname-list">
+                    <p class="nickname-item">...<span class="highlight-name">Chhoti bacchi</span>,</p>
+                    <p class="nickname-item">...my sweet <span class="highlight-name">Kajuu katlii</span>,</p>
+                    <p class="nickname-item">...my amazing <span class="highlight-name">Therapist</span>,</p>
+                    <p class="nickname-item">...my <span class="highlight-name">Choti nanhi si jaan</span>,</p>
+                    <p class="nickname-item">...my gorgeous <span class="highlight-name">Punjaban</span>!</p>
+                    <p class="nickname-item">...my gorgeous <span class="highlight-name">Many more coming</span>!</p>
+                </div>
+                
+                <p>You are my sunshine, my endless joy, my laughter, my comfort, and my greatest adventure.</p>
+                <p>Every single day with you is a gift I cherish more than words can express.</p>
+                <p>Thank you for being you, for brightening my life in every possible way. My love for you grows with each passing second.</p>
+                <p class="love-signature">With all my heart, forever yours. ❤️</p>
+            </div>
+
+            <div class="next-page-container">
+                <button id="to-gallery-btn"> My lil girl <i class="fas fa-images"></i></button>
+            </div>
+            </div>
+    </div>
+
+    
+<div id="page-gallery" class="page">
+        <h2 class="gallery-title card-title">Beautiful pictures of my girl.💕</h2>
+        <div class="scene">
+            <div class="carousel">
+                
+<div class="carousel-cell"><img src="WhatsApp Image 2025-11-01 at 22.19.22_4d33e4ca.jpg" alt=""></div>
+                <div class="carousel-cell"><img src="IMG-20250914-WA0004.jpg" alt=""></div>
+                <div class="carousel-cell"><img src="IMG-20251001-WA0015.jpg" alt=""></div>
+                <div class="carousel-cell"><img src="IMG-20251101-WA0003.jpg" alt=""></div>
+                <div class="carousel-cell"><img src="IMG-20251101-WA0004.jpg" alt=""></div>
+                <div class="carousel-cell"><img src="WhatsApp Image 2025-11-01 at 22.19.21_8607de03.jpg" alt=""></div>
+            </div>
+        </div>
+        <div class="controls">
+            <button id="prev-btn" title="Previous Photo"><i class="fas fa-arrow-alt-circle-left"></i></button>
+            <button id="pause-btn" title="Pause/Play Rotation"><i class="fas fa-pause"></i></button>
+            <button id="next-btn" title="Next Photo"><i class="fas fa-arrow-alt-circle-right"></i></button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
